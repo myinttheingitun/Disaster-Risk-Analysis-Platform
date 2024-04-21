@@ -1,5 +1,4 @@
 from flask import Flask, request, render_template
-# import jsonify
 import backend.backend as backend
 
 app = Flask(__name__)

@@ -129,7 +129,7 @@ class RegressionNet(nn.Module):
 
 # Function to load models
 def load_models():
-    num_features = 97  # Adjust this to match the original model's feature size
+    num_features = 59  # Adjust this to match the original model's feature size
     autoencoder = Autoencoder(num_features)
     regression_model = RegressionNet()
 
@@ -156,6 +156,7 @@ def predict_damage(input_data):
         return int(-predicted_damage.item() * 1e7)
     return int(predicted_damage.item() * 1e7)
 
+expanded_df['Location'] = expanded_df['Location'].str.strip()
 # Use Poisson distribution to estimate the probability of at least one disaster next year at a specific state and estimated damage cost of the disaster
 def pred_disaster(Statename):
   
