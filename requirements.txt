@@ -3,3 +3,4 @@ numpy
 flask
 scipy
 joblib
+openpyxl
