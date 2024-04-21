@@ -8,11 +8,8 @@
 		integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 	<title>Document</title>
 	<style>
-		div.container {
+		div.container-body {
 			min-height: 90vh;
-			display: flex;
-			justify-content: center;
-			align-items: center;
 		}
 
 		.svg-container {
@@ -25,17 +22,26 @@
 			width: 100%;
 			height: auto;
 		}
+
+		svg path {
+			cursor: pointer;
+		}
+		
+		
+		svg path:not(#path67):hover {
+			fill: #FF5733;
+		}
 	</style>
 </head>
 
 <body>
-	<nav class="navbar bg-primary fw-bold fs-2">
+	<nav class="navbar bg-primary fw-bolder" style="height: 100px;">
 		<div class="container-fluid justify-content-center">
-			<a class="navbar-brand text-light" href="#">Disaster Risk Analysis Platform</a>
+			<a class="navbar-brand text-light fs-1" href="#">Disaster Risk Analysis Platform</a>
 		</div>
 	</nav>
-	<div class="container">
-		<div class="row">
+	<div class="container-fluid container-body d-flex align-items-center justify-content-center">
+		<div class="row w-100">
 			<div class="col-lg-6">
 				<div class="svg-container">
 					<?xml version="1.0" encoding="utf-8"?>
@@ -226,11 +232,13 @@
 				</div>
 			</div>
 			<div class="col-lg-6">
+				<h1 id="StateName" style="height: 75px;"></h1>
 				<table class="table table-striped text-center">
 					<thead class="">
 						<tr>
-							<th>Next Year Probablity</th>
-							<th>Total Damage USD</th>
+							<th>Disaster Type</th>
+							<th>Reoccurance Probablity (2025)</th>
+							<th>Probable Damage Estimation (USD)</th>
 						</tr>
 					</thead>
 					<tbody id="table-body" class="thead-light text-center">
