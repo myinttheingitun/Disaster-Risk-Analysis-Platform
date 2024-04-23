@@ -44,5 +44,5 @@ To get a local copy up and running, follow these simple steps.
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/invcble/Risk-Analysis-Platform.github.io.git
+   git clone https://github.com/invcble/Disaster-Risk-Analysis-Platform
    ```
