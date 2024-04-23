@@ -5,11 +5,13 @@ from scipy.stats import poisson
 import torch
 import torch.nn as nn
 import pandas as pd
+import joblib
 from joblib import load
 import numpy as np
 import warnings
 
 warnings.filterwarnings('ignore')
+print(joblib.__version__)
 
 # big_df = pd.read_excel('/content/1900-2024_public_emdat_custom_request_2024-04-20_39efc9b7-44de-48fc-8353-bf01f2e06539.xlsx')
 big_df = pd.read_excel('backend/2000-2024_public_emdat_custom_request_2024-04-21_e453b16f-3ab1-447c-8b91-47a2a3f9f355.xlsx')
