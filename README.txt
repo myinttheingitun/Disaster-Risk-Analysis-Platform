@@ -2,14 +2,7 @@
 
 ## About the Project
 
-Our project, "Disaster Risk Analytics Platform," is developed by a team aiming to provide comprehensive disaster risk analysis for investment firms operating within the U.S. markets. Using advanced statistical analysis and deep learning technologies, this platform helps predict potential disasters and their financial impacts on various states, aiding firms in making informed, resilient investment decisions.
-
-### Project Type
-**Advanced**
-
-## Elevator Pitch
-
-The Disaster Risk Analytics Platform leverages cutting-edge technology to transform uncertainty into a calculable risk. This tool is designed specifically for investment firms to enhance their ability to plan and prosper in volatile markets by providing strategic insights into disaster risks and their potential financial impacts.
+Welcome to our project, "Disaster Risk Analytics Platform," developed with an aim to provide comprehensive disaster risk analysis for investment firms operating within the U.S. markets. Using advanced statistical analysis and deep learning technologies, this platform helps predict potential disasters and their financial impacts on various states, aiding firms in making informed, resilient investment decisions.
 
 ## Features
 
@@ -26,6 +19,18 @@ The Disaster Risk Analytics Platform leverages cutting-edge technology to transf
 - **Autoencoders**: Used for data encoding and dimensionality reduction.
 - **RegressionNet**: A custom deep learning model for estimating financial impacts.
 
+## Data Sources
+
+This project utilizes the comprehensive disaster dataset provided by [EM-DAT](https://www.emdat.be/), which was instrumental in developing our predictive models.
+
+## Codefest Participation
+
+This project was developed for the Philly Codefest. More information about the event can be found at [event.phillycodefest.com](https://event.phillycodefest.com/).
+
+## Live Demo
+
+The web application is currently hosted and can be accessed http://imonbera13.pythonanywhere.com/.
+
 ## Getting Started
 
 To get a local copy up and running, follow these simple steps.
@@ -40,3 +45,4 @@ To get a local copy up and running, follow these simple steps.
 1. Clone the repo
    ```sh
    git clone https://github.com/invcble/Risk-Analysis-Platform.github.io.git
+   ```
