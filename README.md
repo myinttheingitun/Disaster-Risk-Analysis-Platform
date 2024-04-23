@@ -4,6 +4,10 @@
 
 Welcome to our project, "Disaster Risk Analytics Platform," developed with an aim to provide comprehensive disaster risk analysis for investment firms operating within the U.S. markets. Using advanced statistical analysis and deep learning technologies, this platform helps predict potential disasters and their financial impacts on various states, aiding firms in making informed, resilient investment decisions.
 
+## Live Demo
+
+The web application is currently hosted and can be accessed http://imonbera13.pythonanywhere.com/.
+
 ## Features
 
 - **Statistical Modeling:** Utilizes Poisson's distribution to accurately model the frequency of disaster events.
@@ -26,10 +30,6 @@ This project utilizes the comprehensive disaster dataset provided by [EM-DAT](ht
 ## Codefest Participation
 
 This project was developed for the Philly Codefest. More information about the event can be found at [event.phillycodefest.com](https://event.phillycodefest.com/).
-
-## Live Demo
-
-The web application is currently hosted and can be accessed http://imonbera13.pythonanywhere.com/.
 
 ## Getting Started
 
