@@ -5,4 +5,4 @@ torch
 scipy
 joblib
 openpyxl
-sklearn
+scikit-learn

@@ -43,15 +43,25 @@ document.addEventListener("DOMContentLoaded", function () {
             const keyCell = document.createElement('td');
             keyCell.textContent = key;
             row.appendChild(keyCell);
-    
+
             // Prediction cell
             const predictionCell = document.createElement('td');
-            predictionCell.textContent = value[0];
+            predictionCell.textContent = value[0]|| "N/A";
             row.appendChild(predictionCell);
+
+            // Accuracy cell
+            const accuracyCell = document.createElement('td');
+            accuracyCell.textContent = value[1]|| "N/A";
+            row.appendChild(accuracyCell);
+
+            // Prediction cell
+            const predictionCell1 = document.createElement('td');
+            predictionCell1.textContent = value[2]|| "N/A";
+            row.appendChild(predictionCell1);
     
             // Cost cell
             const costCell = document.createElement('td');
-            costCell.textContent = value[1].toLocaleString();
+            costCell.textContent = value[3].toLocaleString();
             row.appendChild(costCell);
     
             tableBody.appendChild(row);

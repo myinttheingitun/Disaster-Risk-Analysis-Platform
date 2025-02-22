@@ -64,26 +64,26 @@ expanded_df.drop('Location_Count', axis=1, inplace=True)
 
 # Mapping dictionary for disaster subtypes
 subtype_mapping = {
-    'Flood (General)': 'Flood', 
+    'Flood (General)': 'Flood',
     'Coastal flood': 'Flood',
     'Flash flood' : 'Flood',
     'Riverine flood' : 'Flood',
-    
-    'Blizzard/Winter storm': 'Severe Storm', 
+
+    'Blizzard/Winter storm': 'Severe Storm',
     'Extra-tropical storm': 'Severe Storm',
     'Storm (General)': 'Severe Storm',
     'Lightning/Thunderstorms': 'Severe Storm',
-    
-    'Forest fire': 'Wildfire', 
+
+    'Forest fire': 'Wildfire',
     'Land fire (Brush, Bush, Pasture)': 'Wildfire',
     'Wildfire (General)': 'Wildfire',
-    
-    'Ground movement': 'Earthquake', 
-    
-    'Landslide (wet)': 'Landslide', 
-    'Mudslide': 'Landslide', 
-    
-    'Tornado': 'Tornado', 
+
+    'Ground movement': 'Earthquake',
+
+    'Landslide (wet)': 'Landslide',
+    'Mudslide': 'Landslide',
+
+    'Tornado': 'Tornado',
     'Tropical cyclone': 'Cyclone',
     'Severe weather': 'Severe Weather',
 }
@@ -161,28 +161,45 @@ def predict_damage(input_data):
 expanded_df['Location'] = expanded_df['Location'].str.strip()
 # Use Poisson distribution to estimate the probability of at least one disaster next year at a specific state and estimated damage cost of the disaster
 def pred_disaster(Statename):
-  
-  years_of_data = expanded_df['Start Year'].max() - expanded_df['Start Year'].min()
-  State_df = expanded_df[expanded_df['Location'] == Statename]
-  Disasters = State_df['Disaster Subtype'].unique()
+    years_of_data2025 = expanded_df['Start Year'].max() - expanded_df['Start Year'].min()
+    State_df2025 = expanded_df[expanded_df['Location'] == Statename]
+    Disasters2025 = State_df2025['Disaster Subtype'].unique()
+    prediction_results2025 = {}
 
-  prediction_results = {}
+    train_df = expanded_df[(expanded_df['Start Year'] >= 2000) & (expanded_df['Start Year'] < 2023)]
+    years_of_data2023 = train_df['Start Year'].max() - train_df['Start Year'].min()
+    State_df2023 = train_df[train_df['Location'] == Statename]
 
-  for disaster in Disasters:
-    input_features = {
-        'Start Year': 2025,
-        'Disaster Subtype': disaster,
-        'Location': Statename
-    }
-    predicted_damage = predict_damage(input_features)
-    disaster_count = State_df['Disaster Subtype'].value_counts()[disaster]
-    prediction = 1 - poisson.pmf(0, disaster_count/years_of_data)
-    prediction_results[disaster] = [f"{prediction:.2%}", predicted_damage]
+    df_2023 = expanded_df[expanded_df['Start Year'] == 2023]
+    State_df_2023_actual = df_2023[df_2023['Location'] == Statename]
 
-  # Convert results to JSON
-  prediction_json = json.dumps(prediction_results, indent=4)
-  return prediction_json
+    for disaster in Disasters2025:
+        input_features = {
+            'Start Year': 2025,
+            'Disaster Subtype': disaster,
+            'Location': Statename
+        }
+        disaster_count2023 = State_df2023['Disaster Subtype'].value_counts().get(disaster, 0)
+        # Calculate the probability and predicted count
+        prediction2023 = 1 - poisson.pmf(0, disaster_count2023 / years_of_data2023)
 
+        disaster_count2025 = State_df2025['Disaster Subtype'].value_counts().get(disaster, 0)
+        prediction2025 = 1 - poisson.pmf(0, disaster_count2025 / years_of_data2025)
+
+        predicted_damage = predict_damage(input_features)
+
+        disaster_count2023_actual = State_df_2023_actual['Disaster Subtype'].value_counts().get(disaster, 0)
+        prediction2023_actual = 1 - poisson.pmf(0, disaster_count2023_actual)
+
+
+
+        prediction_results2025[disaster] = [f"{prediction2023:.2%}",f"{prediction2023_actual:.2%}" , f"{prediction2025:.2%}", predicted_damage]
+
+    # Convert results to JSON
+    prediction_json = json.dumps(prediction_results2025, indent=4)
+    return prediction_json
+
+# Example usage:
 # print(pred_disaster('Florida'))
 # print("-----------------------------------")
 # print(pred_disaster('New Mexico'))
